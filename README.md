@@ -39,13 +39,13 @@ only, with your consent) — the addon has no unrestricted network access.
 **From a release zip** (recommended):
 
 1. Download `wealthfolio-openbanking-io-sync-addon-<version>.zip` from
-   [Releases](https://github.com/john-frandsen/wealthfolio-openbanking-io-sync/releases).
+   [Releases](https://github.com/open-banking-io/wealthfolio-openbanking-io-sync/releases).
 2. In Wealthfolio: Settings → Addons → *Install from file* → pick the zip.
 
 **From source:**
 
 ```bash
-git clone https://github.com/john-frandsen/wealthfolio-openbanking-io-sync
+git clone https://github.com/open-banking-io/wealthfolio-openbanking-io-sync
 cd wealthfolio-openbanking-io-sync
 pnpm install
 pnpm bundle        # produces dist/…-addon-<version>.zip
