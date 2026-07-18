@@ -1,0 +1,72 @@
+{
+  "id": "openbanking-io-sync",
+  "name": "open-banking.io Bank Sync",
+  "version": "0.1.0",
+  "description": "Sync EU/UK bank balances and transactions into Wealthfolio via open-banking.io. Zero-knowledge: data is decrypted locally with your own key.",
+  "author": "John Frandsen",
+  "main": "dist/addon.js",
+  "sdkVersion": "3.6.2",
+  "minWealthfolioVersion": "3.6.2",
+  "enabled": true,
+  "contributes": {
+    "routes": [{ "id": "openbanking-io-sync" }],
+    "links": {
+      "sidebar": [
+        {
+          "id": "openbanking-io-sync",
+          "route": "openbanking-io-sync",
+          "label": "Bank Sync",
+          "icon": "bank",
+          "order": 100
+        }
+      ]
+    }
+  },
+  "network": {
+    "allowedHosts": ["open-banking.io", "api.open-banking.io", "api.staging.open-banking.io"]
+  },
+  "permissions": [
+    {
+      "category": "network",
+      "purpose": "Fetch your encrypted account balances and transactions from the open-banking.io API.",
+      "functions": [{ "name": "request", "isDeclared": true, "isDetected": false }]
+    },
+    {
+      "category": "secrets",
+      "purpose": "Store your open-banking.io credentials (API key + private key) in Wealthfolio's encrypted secret store.",
+      "functions": [
+        { "name": "get", "isDeclared": true, "isDetected": false },
+        { "name": "set", "isDeclared": true, "isDetected": false },
+        { "name": "delete", "isDeclared": true, "isDetected": false }
+      ]
+    },
+    {
+      "category": "accounts",
+      "purpose": "List your accounts and, optionally, create a cash account for each connected bank account.",
+      "functions": [
+        { "name": "getAll", "isDeclared": true, "isDetected": false },
+        { "name": "create", "isDeclared": true, "isDetected": false }
+      ]
+    },
+    {
+      "category": "activities",
+      "purpose": "Import your bank transactions as deposit/withdrawal activities.",
+      "functions": [
+        { "name": "checkImport", "isDeclared": true, "isDetected": false },
+        { "name": "import", "isDeclared": true, "isDetected": false }
+      ]
+    }
+  ],
+  "hostDependencies": {
+    "@tanstack/react-query": "^5.90.0",
+    "@wealthfolio/addon-sdk": "^3.6.2",
+    "@wealthfolio/ui": "^3.6.0",
+    "date-fns": "^4.1.0",
+    "lucide-react": "^0.561.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "recharts": "^3.7.0"
+  },
+  "keywords": ["wealthfolio", "addon", "open-banking", "psd2", "bank-sync", "fintech"],
+  "license": "MIT"
+}
